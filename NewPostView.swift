@@ -1,18 +1,17 @@
 //
-//  PostView.swift
+//  NewPostView.swift
 //  CommYOUnity Volunteering
 //
-//  Created by Adedeji Jare Kuforiji on 3/22/24.
+//  Created by Adedeji Jare Kuforiji on 4/5/24.
 //
 
 import Foundation
 import UIKit
 
-class PostView: UIView {
-    
+class NewPostView: UIView
+{
     public var Title: String?
     public var Body: String?
-    
     override init(frame: CGRect)
     {
         super.init(frame: frame)
@@ -27,8 +26,8 @@ class PostView: UIView {
     
     override func draw(_: CGRect){
         let path = UIBezierPath()
-        path.move(to: CGPoint(x:0,y:95))
-        path.addLine(to: CGPoint(x:400,y:95))
+        path.move(to: CGPoint(x:0,y:50))
+        path.addLine(to: CGPoint(x:400,y:50))
         path.lineWidth = 2.0
         UIColor.lightGray.setStroke()
         path.close()
@@ -39,17 +38,15 @@ class PostView: UIView {
     private func setup(){
         self.backgroundColor = UIColor.white
         //Profile Picture
-        let ProPic = UIImageView(frame: CGRect(x:0,y:0, width: 50, height: 50))
-        ProPic.image = UIImage(systemName: "person")
-        self.addSubview(ProPic)
         
         
         //Title
-        let PostTitle = UILabel(frame: CGRect(x:0, y:60,width:150,height:20))
-        PostTitle.adjustsFontSizeToFitWidth = false
+        let PostTitle = UITextField(frame: CGRect(x:0, y:0,width:150,height:20))
+        PostTitle.placeholder = "Title"
+        PostTitle.adjustsFontSizeToFitWidth = true
         PostTitle.font = UIFont(name: "SF Pro", size: 35)
         PostTitle.textColor = UIColor.black
-        PostTitle.text = Title
+        Title = PostTitle.text
         self.addSubview(PostTitle)
         
         
@@ -58,13 +55,13 @@ class PostView: UIView {
         
         
         //Body
-        let PostBody = UILabel(frame: CGRect(x:0, y:105,width:100,height:20))
-        PostBody.textColor = UIColor.lightGray
-        PostBody.text = Body
+        let PostBody = UITextField(frame: CGRect(x:0, y:60,width:400,height:600))
+        PostBody.placeholder = "New Post"
+        PostBody.adjustsFontSizeToFitWidth = true
+        PostBody.textColor = UIColor.black
+        Body = PostBody.text
         self.addSubview(PostBody)
         
         
     }
 }
-
-

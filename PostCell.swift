@@ -12,9 +12,11 @@ class PostCell: UICollectionViewCell
 {
     let postObject = PostView(frame: CGRect(x:0,y:0,width:600,height:400))
     
-    override init(frame: CGRect)
+   
+    
+     
+    private func Setup()
     {
-        super.init(frame: frame)
         addSubview(postObject)
         
         postObject.translatesAutoresizingMaskIntoConstraints = false
@@ -23,8 +25,15 @@ class PostCell: UICollectionViewCell
         postObject.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
     
-    required init?(coder:NSCoder)
+    func configure(title: String,body:String)
     {
-        fatalError("init(coder:) has not been implemented")
+        self.postObject.Title = title
+        self.postObject.Body = body
+        self.Setup()
+    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.postObject.Title = nil
+        self.postObject.Body = nil
     }
 }
